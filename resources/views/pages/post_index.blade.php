@@ -9,7 +9,7 @@
 		<p><strong>Genere:</strong> {{ $element -> category -> name }}
 		<br>
 		{{ $element -> content }}
-		<a class="box__read" href="#">Leggi l'articolo</a>
+		<a class="box__read" href="{{ route('post.show', $element -> id) }}">Leggi l'articolo</a>
 	</div>
 @endforeach
 

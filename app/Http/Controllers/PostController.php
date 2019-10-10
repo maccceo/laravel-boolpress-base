@@ -17,8 +17,10 @@ class PostController extends Controller
         $elements = Post::all();
         // accorcio il contenuto per leggibilità
         foreach ($elements as $element) {
-            $shortenContent = implode(" ", explode(" ", $element -> content, 20));
-            $element -> content = $shortenContent . "...";
+            // cerco primo spazio dopo 100 caratteri
+            $pos = strpos($element -> content, ' ', 100);
+            // tolgo tutto quello che viene dopo e aggiungo "..."
+            $element -> content = substr($element -> content, 0, $pos) . "..."; 
         }
         return view('pages.post_index', compact('elements'));
     }
@@ -52,7 +54,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $element = Post::findOrFail($id);
+        return view ('pages.post_show', compact('element'));
     }
 
     /**
