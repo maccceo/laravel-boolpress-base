@@ -10,6 +10,6 @@ class Post extends Model
 	protected $fillable = ['name'];
 
 	public function category() {
-		return $this -> belongTo(Category::class);
+		return $this -> belongsTo(Category::class);
 	}
 }
