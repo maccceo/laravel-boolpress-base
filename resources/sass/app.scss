@@ -2,37 +2,63 @@ body {
 	font-family: Nunito, sans-serif;
 	margin: 0;
 	padding: 0 30px;
+	background-image: url("images/bg.png");
+	background-size: cover;
+	background-attachment: fixed;
 }
 
-.box {
-	display: inline-block;
-	height: 50px;
-	width: 50px;
-	border: 1px solid black;
+h3 {
+	font-size: 1.5rem;
+	margin-bottom: 4px;
 	text-align: center;
-	line-height: 50px;
-	margin: 5px;
-	font-size: 2rem;
-	font-weight: bold;
-}
-
-.number {
-	background-color: orange;
-	color: white;
-}
-
-.letter {
-	background-color: red;
-	color: white;
 }
 
 h1 {
 	text-align: center;
 }
 
+.main-container {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	flex: 1 1 auto;
+}
+
+.box {
+	width: 260px;
+	padding: 10px 15px;
+	margin: 15px;
+	background-color: white;
+	border-radius: 2px;
+
+	.box__author {
+		text-align: center;
+		margin: 0 0 10px 0;
+	}
+
+	.box__read {
+		text-decoration: none;
+		color: black;
+		border: 1px solid black;
+		border-radius: 2px;
+		padding: 5px 10px;
+		margin-top: 15px;
+		display: block;
+		text-align: center;
+		cursor: pointer;
+
+		&:hover {
+			font-weight: bold;
+		}
+	}
+}
+
+
 
 .header {
 	
+	width: 100%;
+
 	li {
 		display: inline-block;
 		margin: 0 15px;
@@ -47,9 +73,4 @@ h1 {
 		font-weight: bold;
 	}
 
-}
-
-.footer {
-	position: absolute;
-	bottom: 0;
 }

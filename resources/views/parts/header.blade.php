@@ -1,4 +1,4 @@
-<ul class="header {{ $type }}">
+<ul class="header">
 	<li>CIAO</li>
 	<li>Menù</li>
 	<li>Welcome</li>

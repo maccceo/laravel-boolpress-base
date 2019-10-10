@@ -8,7 +8,7 @@
     <title></title>
   </head>
   <body>
-  	<div id="main-container">
+  	<div class="main-container">
       @include ('parts.header')
       @yield('content')
       @include ('parts.footer')

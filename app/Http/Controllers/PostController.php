@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 
 class PostController extends Controller
 {
@@ -13,7 +14,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $elements = Post::all();
+        // accorcio il contenuto per leggibilità
+        foreach ($elements as $element) {
+            $shortenContent = implode(" ", explode(" ", $element -> content, 20));
+            $element -> content = $shortenContent . "...";
+        }
+        return view('pages.post_index', compact('elements'));
     }
 
     /**
