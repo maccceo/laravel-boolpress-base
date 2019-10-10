@@ -1,0 +1,1 @@
+<p class="footer {{ $type }}">Ciao, vi saluto che è tardi e penso sia arrivata l'ora di andare via. Comunque vi auguro buon proseguimento e una felice serata.</p>
