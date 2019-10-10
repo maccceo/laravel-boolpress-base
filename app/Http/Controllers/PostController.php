@@ -15,14 +15,23 @@ class PostController extends Controller
     public function index()
     {
         $elements = Post::all();
-        // accorcio il contenuto per leggibilità
+        $categories = [];
         foreach ($elements as $element) {
+
+            // # # ACCORCIO CONTENUTO
             // cerco primo spazio dopo 100 caratteri
             $pos = strpos($element -> content, ' ', 100);
             // tolgo tutto quello che viene dopo e aggiungo "..."
             $element -> content = substr($element -> content, 0, $pos) . "..."; 
+
+            // # # ARRAY CON CATEGORIE
+            // se la categoria non era stata salvata precedentemente
+            if (!in_array($element -> category -> name, $categories)) {
+                // la aggiungo
+                $categories[] = $element -> category -> name;
+            }
         }
-        return view('pages.post_index', compact('elements'));
+        return view('pages.post_index', compact('elements','categories'));
     }
 
     /**

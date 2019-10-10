@@ -2,7 +2,15 @@
 
 @section('content')
 
+<div class="category-switch">
+	<p id="category-switch__title">Seleziona per categoria:</p>
+	@foreach($categories as $category)
+		<p>{{ $category }}</p>
+	@endforeach
+</div>
+
 @foreach($elements as $element)
+
 	<div class="box">
 		<h3>{{ $element -> title }}</h3>
 		<p class="box__author">di {{ $element -> author }}</p>
