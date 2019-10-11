@@ -4,8 +4,20 @@
 
 <div class="category-switch">
 	<p id="category-switch__title">Seleziona per categoria:</p>
-	@foreach($categories as $category)
-		<p>{{ $category }}</p>
+
+	@foreach($elements as $element)
+
+		{{-- se non è già stato inserito aggiungilo --}}
+		@if (!in_array($element -> category -> id, $categories))
+
+			{{-- stampa --}}
+			<a href="{{ route('category.show', $element -> category -> id) }}">{{ $element -> category -> name }}</a>
+
+			{{-- non lo faccio aggiungere più --}}
+			<?php $categories[] = $element -> category -> id ?>
+
+		@endif
+		
 	@endforeach
 </div>
 

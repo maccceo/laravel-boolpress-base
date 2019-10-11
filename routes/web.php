@@ -11,6 +11,7 @@ Route::get('/admin/post/create', 'PostController@create') -> name('post.create')
 
 // UPDATE
 Route::get('/admin/post/{id}/edit', 'PostController@edit') -> name('post.edit');
+Route::post('/admin/post/{id}', 'PostController@update') -> name('post.update');
 
 
 

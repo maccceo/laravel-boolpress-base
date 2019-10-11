@@ -9,7 +9,7 @@
 	<p><strong>Genere:</strong> {{ $element -> category -> name }}
 	<br>
 	{{ $element -> content }}
-	<a class="box__read" href="{{ route('post.index') }}">Torna indietro</a>
+	<a class="box__read" href="{{ url()->previous() }}">Torna indietro</a>
 </div>
 
 

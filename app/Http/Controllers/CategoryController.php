@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
+use App\Post;
 
 class CategoryController extends Controller
 {
@@ -45,7 +47,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $elements = Post::where('category_id', $id) -> get();
+        return view ('pages.category_show', compact('elements'));
     }
 
     /**
