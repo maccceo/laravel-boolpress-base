@@ -18,12 +18,13 @@ class PostController extends Controller
         $categories = [];
         foreach ($elements as $element) {
 
-            // # # ACCORCIO CONTENUTO
-            // cerco primo spazio dopo 100 caratteri
-            $pos = strpos($element -> content, ' ', 100);
-            // tolgo tutto quello che viene dopo e aggiungo "..."
-            $element -> content = substr($element -> content, 0, $pos) . "..."; 
-
+            if(strlen($element -> content) > 150) {
+                // # # ACCORCIO CONTENUTO
+                // cerco primo spazio dopo 150 caratteri
+                $pos = strpos($element -> content, ' ', 150);
+                // tolgo tutto quello che viene dopo e aggiungo "..."
+                $element -> content = substr($element -> content, 0, $pos) . "..."; 
+            }
             // # # ARRAY CON CATEGORIE
             // se la categoria non era stata salvata precedentemente
             if (!in_array($element -> category -> name, $categories)) {
@@ -41,7 +42,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $elements = Post::all();
+        return view("pages.post_create", compact('elements'));
     }
 
     /**
@@ -52,7 +54,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request -> validate([
+                'title' => 'required',
+                'author' => 'required',
+                'content' => 'required',
+                'category_id' => 'required'
+           ]);
+        $elements = Post::create($validatedData);
+        return redirect('/');
     }
 
     /**

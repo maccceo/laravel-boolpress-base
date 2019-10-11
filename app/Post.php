@@ -7,7 +7,12 @@ use App\Category;
 
 class Post extends Model
 {
-	protected $fillable = ['name'];
+	protected $fillable = [
+		'title',
+		'author',
+		'content',
+		'category_id'
+	];
 
 	public function category() {
 		return $this -> belongsTo(Category::class);
