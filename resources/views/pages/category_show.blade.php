@@ -13,7 +13,7 @@
 		<h3>{{ $element -> title }}</h3>
 		<p class="box__author">di {{ $element -> author }}</p>
 		<br>
-		{{ $element -> content }}
+		{!! $element -> content !!}
 		<a class="box__read" href="{{ route('post.show', $element -> id) }}">Leggi l'articolo</a>
 	</div>
 @endforeach

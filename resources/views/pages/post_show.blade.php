@@ -8,7 +8,7 @@
 	<p class="box__author">di {{ $element -> author }}</p>
 	<p><strong>Genere:</strong> {{ $element -> category -> name }}
 	<br>
-	{{ $element -> content }}
+	{!! $element -> content !!}
 	<a class="box__read" href="{{ url()->previous() }}">Torna indietro</a>
 </div>
 

@@ -16,6 +16,7 @@
 		<label for="category_id">Categoria:</label><br>
 		<select name="category_id">
 
+		<?php $duplicates = []; ?>
 		@foreach($categories as $category)
 			{{-- se non è già stato inserito aggiungilo --}}
 			@if (!in_array($category -> category -> id, $duplicates))
