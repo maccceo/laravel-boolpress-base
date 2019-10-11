@@ -84,7 +84,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $element = Post::findOrFail($id);
+        $categories = Post::all();
+        return view("pages.post_update", compact('element', 'categories'));
     }
 
     /**
@@ -96,7 +98,14 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request -> validate([
+                'title' => 'required',
+                'author' => 'required',
+                'content' => 'required',
+                'category_id' => 'required'
+           ]);
+        Post::whereId($id) -> update($validatedData);
+        return redirect('/');
     }
 
     /**

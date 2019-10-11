@@ -8,7 +8,7 @@ Route::get('/category/{id}', 'CategoryController@show') -> name('category.show')
 
 // CREATE
 Route::get('/admin/post/create', 'PostController@create') -> name('post.create');
-Route::post('/admin/post/create', 'PostController@store') -> name('post.store');
+Route::post('/admin/post', 'PostController@store') -> name('post.store');
 
 // UPDATE
 Route::get('/admin/post/{id}/edit', 'PostController@edit') -> name('post.edit');
