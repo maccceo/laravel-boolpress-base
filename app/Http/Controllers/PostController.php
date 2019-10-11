@@ -14,24 +14,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        $elements = Post::all();
-        $categories = [];
-        foreach ($elements as $element) {
+        // ultimi 5 elementi salvati
+        $elements = Post::orderBy('updated_at', 'desc') -> take(5) -> get();
+        $elements = $this -> contentShrinker($elements, 150);
 
-            if(strlen($element -> content) > 150) {
-                // # # ACCORCIO CONTENUTO
-                // cerco primo spazio dopo 150 caratteri
-                $pos = strpos($element -> content, ' ', 150);
-                // tolgo tutto quello che viene dopo e aggiungo "..."
-                $element -> content = substr($element -> content, 0, $pos) . "..."; 
-            }
-            // # # ARRAY CON CATEGORIE
-            // se la categoria non era stata salvata precedentemente
-            if (!in_array($element -> category -> name, $categories)) {
-                // la aggiungo
-                $categories[] = $element -> category -> name;
-            }
-        }
+        $categories = Post::all();
+        
         return view('pages.post_index', compact('elements','categories'));
     }
 
@@ -117,5 +105,21 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    // # # ACCORCIATORE TESTO ARTICOLO DA HOMEPAGE
+    private function contentShrinker($elements, $char) {
+        
+        foreach ($elements as $element) {
+            // se il contenuto è più lungo del massimo consentito
+            if(strlen($element -> content) > $char) {
+
+                // cerco primo spazio dopo $char caratteri
+                $pos = strpos($element -> content, ' ', $char);
+                // tolgo tutto quello che viene dopo e aggiungo "..."
+                $element -> content = substr($element -> content, 0, $pos) . "..."; 
+            }
+        }
+        return $elements;
     }
 }

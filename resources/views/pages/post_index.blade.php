@@ -5,16 +5,17 @@
 <div class="category-switch">
 	<p id="category-switch__title">Seleziona per categoria:</p>
 
-	@foreach($elements as $element)
+	<?php $duplicates = []; ?>
+	@foreach($categories as $category)
 
 		{{-- se non è già stato inserito aggiungilo --}}
-		@if (!in_array($element -> category -> id, $categories))
+		@if (!in_array($category -> category -> id, $duplicates))
 
 			{{-- stampa --}}
-			<a href="{{ route('category.show', $element -> category -> id) }}">{{ $element -> category -> name }}</a>
+			<a href="{{ route('category.show', $category -> category -> id) }}">{{ $category -> category -> name }}</a>
 
 			{{-- non lo faccio aggiungere più --}}
-			<?php $categories[] = $element -> category -> id ?>
+			<?php $duplicates[] = $category -> category -> id ?>
 
 		@endif
 		
