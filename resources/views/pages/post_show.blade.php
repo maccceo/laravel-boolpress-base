@@ -9,7 +9,14 @@
 	<p><strong>Genere:</strong> {{ $element -> category -> name }}
 	<br>
 	{!! $element -> content !!}
-	<a class="box__read" href="{{ url()->previous() }}">Torna indietro</a>
+	<br>
+	<p><strong>Tags:</strong>
+		@foreach($element -> tags as $tag)
+		<a href="{{ route('tag.show', $tag -> id) }}">#{{ $tag -> name }}</a> 
+		@endforeach
+	</p>
+
+	<a class="box__read" href="{{ route('post.index') }}">Torna alla home</a>
 </div>
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Tag;
 
 class TagController extends Controller
 {
@@ -45,7 +46,9 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        //
+        $element = Tag::findOrFail($id);
+        // dd($element -> tags);
+        return view ('pages.tag_show', compact('element'));
     }
 
     /**

@@ -36,7 +36,7 @@
 		<input type="submit" value="Invia articolo"></form>
 	</form>
 
-	<a class="box__read" href="{{ route('post.index') }}">Torna indietro</a>
+	<a class="box__read" href="{{ route('post.index') }}">Torna alla home</a>
 </div>
 
 

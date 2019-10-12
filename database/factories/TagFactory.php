@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Tag::class, function (Faker $faker) {
     return [
-        "name" => $faker -> name(),
-        "description" => $faker -> sentence(1)
+        "name" => $faker -> word(),
+        "description" => $faker -> sentence(4)
     ];
 });

@@ -61,6 +61,7 @@ class PostController extends Controller
     public function show($id)
     {
         $element = Post::findOrFail($id);
+        // dd($element -> tags);
         return view ('pages.post_show', compact('element'));
     }
 
